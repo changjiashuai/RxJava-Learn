@@ -42,6 +42,7 @@
         //订阅方法内部实现
         private static <T> Subscription subscribe(Subscriber<? super T> subscriber, Observable<T> observable) {
             if (subscriber == null) {
+                //没有订阅者
                 throw new IllegalArgumentException("observer can not be null");
             }
             if (observable.onSubscribe == null) {
