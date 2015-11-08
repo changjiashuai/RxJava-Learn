@@ -72,9 +72,7 @@
     })
     2.订阅
     //Observable.subscribe(final Observer<? super T> observer);  
-    public final Subscription subscribe(Subscriber<? super T> subscriber) {
-        return Observable.subscribe(subscriber, this);
-    }
+    //Observable.subscribe(Subscriber<? super T> subscriber);
     .subscribe(/*订阅者*/new Subscriber<String>() {
         @Override
         public void onCompleted() {
