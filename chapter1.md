@@ -37,18 +37,41 @@ rx
 |___Single
 |___SingleSubscriber
 |___Subscriber
+    |---> abstract Subscriber<T> implements Observer<T>
 |___Subscription
+    |---
+        interface Subscription{
+            void unsubscribe();
+            void isUnsubscribed();
+        }
 ```
 
 
 ```
-Observable<String> myObservable = Observable.create(  
-    new Observable.OnSubscribe<String>() {  
-        @Override  
-        public void call(Subscriber<? super String> sub) {  
-            sub.onNext("Hello, world!");  
-            sub.onCompleted();  
-        }  
-    }  
-);
+ Observable.create(new OnSubscribe<String>() {
+
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("Hello World!");
+                subscriber.onCompleted();
+            }
+
+        }).subscribe(new Subscriber<String>() {
+
+            @Override
+            public void onCompleted() {
+                System.out.println("Done");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(String t) {
+                System.out.println(t);
+            }
+
+        });
 ```
