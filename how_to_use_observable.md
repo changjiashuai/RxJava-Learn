@@ -60,6 +60,7 @@
             } catch (Throwable e) {
                 Exceptions.throwIfFatal(e);
                 try {
+                    //出错处理
                     subscriber.onError(hook.onSubscribeError(e));
                 } catch (OnErrorNotImplementedException e2) {
                     throw e2;
