@@ -56,7 +56,7 @@
     
     1.创建
     //Observable.create(OnSubscribe<T> f);
-    Observable.create(new OnSubscribe<String>() {
+    Observable.create(/*订阅事件*/new OnSubscribe<String>() {
         @Override
         public void call(Subscriber<? super String> subscriber) {
             subscriber.onNext("Hello World!");
@@ -65,7 +65,7 @@
     })
     2.订阅
     //Observable.subscribe(final Observer<? super T> observer);  
-    .subscribe(new Subscriber<String>() {
+    .subscribe(/*订阅者*/new Subscriber<String>() {
         @Override
         public void onCompleted() {
             System.out.println("Done");
