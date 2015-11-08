@@ -63,7 +63,7 @@
             subscriber.onCompleted();
         }
     })
-    2. 订阅
+    2.订阅
     //Observable.subscribe(final Observer<? super T> observer);  
     .subscribe(new Subscriber<String>() {
         @Override
