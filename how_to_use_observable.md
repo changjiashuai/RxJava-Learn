@@ -49,6 +49,7 @@
                 //订阅事件不能为空
                 throw new IllegalStateException("onSubscribe function can not be null.");
             }
+            //开始订阅
             subscriber.onStart();
             if (!(subscriber instanceof SafeSubscriber)) {
                 subscriber = new SafeSubscriber<T>(subscriber);
