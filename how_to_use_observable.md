@@ -46,6 +46,7 @@
                 throw new IllegalArgumentException("observer can not be null");
             }
             if (observable.onSubscribe == null) {
+                //订阅事件不能为空
                 throw new IllegalStateException("onSubscribe function can not be null.");
             }
             subscriber.onStart();
