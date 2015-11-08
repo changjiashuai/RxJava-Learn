@@ -38,6 +38,36 @@
         public final Subscription subscribe(Subscriber<? super T> subscriber) {
             return Observable.subscribe(subscriber, this);
         }
+        
+        //订阅方法内部实现
+        private static <T> Subscription subscribe(Subscriber<? super T> subscriber, Observable<T> observable) {
+            if (subscriber == null) {
+                throw new IllegalArgumentException("observer can not be null");
+            }
+            if (observable.onSubscribe == null) {
+                throw new IllegalStateException("onSubscribe function can not be null.");
+            }
+            subscriber.onStart();
+            if (!(subscriber instanceof SafeSubscriber)) {
+                subscriber = new SafeSubscriber<T>(subscriber);
+            }
+            try {
+                hook.onSubscribeStart(observable, observable.onSubscribe).call(subscriber);
+                return hook.onSubscribeReturn(subscriber);
+            } catch (Throwable e) {
+                Exceptions.throwIfFatal(e);
+                try {
+                    subscriber.onError(hook.onSubscribeError(e));
+                } catch (OnErrorNotImplementedException e2) {
+                    throw e2;
+                } catch (Throwable e2) {
+                    RuntimeException r = new RuntimeException("Error occurred attempting to subscribe [" + e.getMessage() + "] and then again while trying to pass to onError.", e2);
+                    hook.onSubscribeError(r);
+                    throw r;
+                }
+                return Subscriptions.unsubscribed();
+            }
+        }
         ...
     }
     
