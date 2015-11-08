@@ -54,7 +54,7 @@
         void onNext(T t);
     }
     
-    1.
+    1.创建
     //Observable.create(OnSubscribe<T> f);
     Observable.create(new OnSubscribe<String>() {
         @Override
