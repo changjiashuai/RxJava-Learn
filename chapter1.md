@@ -37,7 +37,7 @@ rx
 |___Single
 |___SingleSubscriber
 |___Subscriber
-    |---> abstract Subscriber<T> implements Observer<T>
+    |---> abstract Subscriber<T> implements Observer<T>, Subscription
 |___Subscription
     |---
         interface Subscription{
