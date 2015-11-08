@@ -49,6 +49,7 @@
         void call(T t);
     }
 
+    //订阅者 实现了 观察者接口
     public abstract class Subscriber<T> implements Observer<T>, Subscription {
     }
     
