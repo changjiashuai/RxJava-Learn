@@ -54,6 +54,8 @@
         void onNext(T t);
     }
     
+    //Observable.create(...).subscribe(...);
+    
     1.创建
     //Observable.create(OnSubscribe<T> f);
     Observable.create(/*订阅事件*/new OnSubscribe<String>() {
