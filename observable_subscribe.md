@@ -1,8 +1,9 @@
 # Observable subscribe...
 
 ``` subscribe()  ```
->没有回调处理，但可以在动作完成前停止掉
+> 没有回调处理，但可以在动作完成前停止掉
 
+```
     public final Subscription subscribe() {
         return subscribe(new Subscriber<T>() {
 
@@ -23,10 +24,12 @@
 
         });
     }
-    
-## subscribe(final Action1<? super T> onNext)
->提供一个回调处理提交的数据
+```
 
+``` subscribe(final Action1<? super T> onNext) ```
+> 提供一个回调处理提交的数据
+
+```
     public final Subscription subscribe(final Action1<? super T> onNext) {
         if (onNext == null) {
             throw new IllegalArgumentException("onNext can not be null");
@@ -51,11 +54,13 @@
 
         });
     }
-    
-## subscribe(final Action1<? super T> onNext, final          Action1<Throwable> onError)
+```
 
-###提供一个回调处理提交的数据和一个错误处理
-    
+``` subscribe(final Action1<? super T> onNext, final          Action1<Throwable> onError) ```
+
+> 提供一个回调处理提交的数据和一个错误处理
+
+```    
     public final Subscription subscribe(final Action1<? super T> onNext, final Action1<Throwable> onError) {
         if (onNext == null) {
             throw new IllegalArgumentException("onNext can not be null");
@@ -83,7 +88,12 @@
 
         });
     }
-    
+```
+``` subscribe(final Action1<? super T> onNext, final Aciton1<Throwable> onError, final Action0 onComplete) ```
+
+> 提供一个回调处理提交的数据和一个错误处理和一个完成通知
+
+```
     public final Subscription subscribe(final Action1<? super T> onNext, final Action1<Throwable> onError, final Action0 onComplete) {
         if (onNext == null) {
             throw new IllegalArgumentException("onNext can not be null");
@@ -114,3 +124,4 @@
 
         });
     }
+```
