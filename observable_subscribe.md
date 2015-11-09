@@ -125,3 +125,41 @@
         });
     }
 ```
+
+```
+    public interface Observer<T> {
+        void onCompleted();
+        void onError(Throwable e);
+        void onNext(T t);
+    }
+```
+
+``` subscribe(final Observer<? super T> observer) ```
+
+> 提供一个回调处理提交的数据和一个错误处理和一个完成通知
+
+```
+    public final Subscription subscribe(final Observer<? super T> observer) {
+        if (observer instanceof Subscriber) {
+            return subscribe((Subscriber<? super T>)observer);
+        }
+        return subscribe(new Subscriber<T>() {
+
+            @Override
+            public void onCompleted() {
+                observer.onCompleted();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                observer.onError(e);
+            }
+
+            @Override
+            public void onNext(T t) {
+                observer.onNext(t);
+            }
+
+        });
+    }
+```
