@@ -52,7 +52,8 @@
         });
     }
     
-## subscribe(final Action1<? super T> onNext, final Action1<Throwable> onError)
+## subscribe(final Action1<? super T> onNext, final  Action1<Throwable> onError)
+
 >提供一个回调处理提交的数据和一个错误处理
     
     public final Subscription subscribe(final Action1<? super T> onNext, final Action1<Throwable> onError) {
@@ -68,6 +69,37 @@
             @Override
             public final void onCompleted() {
                 // do nothing
+            }
+
+            @Override
+            public final void onError(Throwable e) {
+                onError.call(e);
+            }
+
+            @Override
+            public final void onNext(T args) {
+                onNext.call(args);
+            }
+
+        });
+    }
+    
+    public final Subscription subscribe(final Action1<? super T> onNext, final Action1<Throwable> onError, final Action0 onComplete) {
+        if (onNext == null) {
+            throw new IllegalArgumentException("onNext can not be null");
+        }
+        if (onError == null) {
+            throw new IllegalArgumentException("onError can not be null");
+        }
+        if (onComplete == null) {
+            throw new IllegalArgumentException("onComplete can not be null");
+        }
+
+        return subscribe(new Subscriber<T>() {
+
+            @Override
+            public final void onCompleted() {
+                onComplete.call();
             }
 
             @Override
