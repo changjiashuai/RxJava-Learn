@@ -136,7 +136,7 @@
 
 ``` subscribe(final Observer<? super T> observer) ```
 
-> 提供一个观察着
+> 提供一个观察者
 
 ```
     public final Subscription subscribe(final Observer<? super T> observer) {
