@@ -125,7 +125,7 @@
         });
     }
 ```
-
+---
 ```
     public interface Observer<T> {
         void onCompleted();
