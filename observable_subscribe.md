@@ -132,6 +132,9 @@
         void onError(Throwable e);
         void onNext(T t);
     }
+    
+    public abstract class Subscriber<T> implements Observer<T>, Subscription {
+    }
 ```
 
 ``` subscribe(final Observer<? super T> observer) ```
