@@ -35,6 +35,10 @@
 
     }
     
+    public interface Action0 extends Action {
+        void call();
+    }
+
     public interface Action1<T> extends Action {
         void call(T t);
     }
