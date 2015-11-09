@@ -26,6 +26,20 @@
     }
 ```
 
+```
+    public interface Function {
+
+    }
+    
+    public interface Action extends Function {
+
+    }
+    
+    public interface Action1<T> extends Action {
+        void call(T t);
+    }
+```
+
 ``` subscribe(final Action1<? super T> onNext) ```
 > 提供一个回调处理提交的数据
 
