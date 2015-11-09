@@ -136,7 +136,7 @@
 
 ``` subscribe(final Observer<? super T> observer) ```
 
-> 提供一个回调处理提交的数据和一个错误处理和一个完成通知
+> 提供一个观察着
 
 ```
     public final Subscription subscribe(final Observer<? super T> observer) {
