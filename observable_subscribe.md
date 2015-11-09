@@ -53,7 +53,7 @@
     }
     
 ## subscribe(final Action1<? super T> onNext, final Action1<Throwable> onError)
->
+>提供一个回调处理提交的数据和一个错误
     
     public final Subscription subscribe(final Action1<? super T> onNext, final Action1<Throwable> onError) {
         if (onNext == null) {
