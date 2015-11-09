@@ -1,6 +1,6 @@
 # Observable subscribe...
 
-## subscribe()
+``` subscribe()  ```
 >没有回调处理，但可以在动作完成前停止掉
 
     public final Subscription subscribe() {
